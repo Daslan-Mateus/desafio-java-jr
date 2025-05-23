@@ -1,4 +1,3 @@
-# desafio-java-jr
 
 # Seleção Dev Java
 Se você chegou até aqui é porque se interessou em fazer parte do nosso quadro de funcionários. Como temos muitas oportunidades para você colocar a mão na massa, queremos ver como você se sai com o cenário abaixo, por meio do qual conseguiremos avaliar várias de suas competências.
