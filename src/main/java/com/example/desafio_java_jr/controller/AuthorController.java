@@ -1,4 +1,4 @@
-package controller;
+package com.example.desafio_java_jr.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
