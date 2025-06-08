@@ -1,13 +1,23 @@
 package com.example.desafio_java_jr.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.example.desafio_java_jr.dto.AuthorDto;
+import com.example.desafio_java_jr.entity.Author;
+import com.example.desafio_java_jr.service.AuthorService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class AuthorController {
 
-    @GetMapping("/author")
-    public String getName() {
-        return "Daslan";
+    @Autowired
+    AuthorService authorService;
+
+    @PostMapping("/authors")
+    public ResponseEntity<AuthorDto> save(@RequestBody AuthorDto author) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(authorService.save(author));
     }
 }
