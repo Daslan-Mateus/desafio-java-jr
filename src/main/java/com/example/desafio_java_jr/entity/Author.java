@@ -26,6 +26,7 @@ public class Author {
 
     private String sex;
 
+    @Column(unique = true)
     private String email;
 
     private Date birth;

@@ -2,7 +2,9 @@ package com.example.desafio_java_jr.service;
 
 import com.example.desafio_java_jr.dto.AuthorDto;
 import com.example.desafio_java_jr.entity.Author;
+import com.example.desafio_java_jr.exception.EmailDuplicadoException;
 import com.example.desafio_java_jr.repository.AuthorRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,9 @@ public class AuthorService {
 
     public AuthorDto save(AuthorDto authorDto) {
         Author authorEntity = toEntity(authorDto);
+        if(!StringUtils.isEmpty(authorEntity.getCpf()) && authorRepository.existsByEmail(authorEntity.getEmail())) {
+            throw new EmailDuplicadoException("Email já existe: " + authorEntity.getEmail());
+        }
         return toDto(authorRepository.save(authorEntity));
     }
 
