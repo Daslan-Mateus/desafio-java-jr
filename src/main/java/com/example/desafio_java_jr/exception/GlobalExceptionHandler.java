@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(EmailDuplicadoException.class)
-    public ResponseEntity<String> handleEmailDuplicado(EmailDuplicadoException ex) {
+    @ExceptionHandler(EmailDuplicatorException.class)
+    public ResponseEntity<String> handleEmailDuplicado(EmailDuplicatorException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(NullDatePublicationAndExhibition.class)
+    public ResponseEntity<String> handleNulDatePublicationAndExhibition(NullDatePublicationAndExhibition ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
 
